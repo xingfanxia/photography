@@ -151,8 +151,8 @@
         $window
             .on('keyup', function (event) {
 
-                if (event.keyCode == 27
-                    && $body.hasClass('content-active')) {
+                if (event.keyCode == 27 &&
+                    $body.hasClass('content-active')) {
 
                     event.preventDefault();
                     event.stopPropagation();
@@ -173,8 +173,8 @@
                 href = $this.attr('href');
 
             // Internal link? Skip.
-            if (!href
-                || href.charAt(0) == '#')
+            if (!href ||
+                href.charAt(0) == '#')
                 return;
 
             // Redirect on click.
@@ -222,7 +222,8 @@
         $main.children('.thumb').each(function () {
 
             var $this = $(this),
-                $image = $this.find('.image'), $image_img = $image.children('img'),
+                $image = $this.find('.image'),
+                $image_img = $image.children('img'),
                 x;
 
             // No image? Bail.
@@ -248,10 +249,10 @@
             // the click through to the image.
             if (skel.vars.IEVersion < 11)
                 $this
-                    .css('cursor', 'pointer')
-                    .on('click', function () {
-                        $image.trigger('click');
-                    });
+                .css('cursor', 'pointer')
+                .on('click', function () {
+                    $image.trigger('click');
+                });
 
             // EXIF data					
             EXIF.getData($image_img[0], function () {
@@ -309,18 +310,28 @@
         function getExifDataMarkup(img) {
             var exif = fetchExifData(img);
             var template = '';
+            console.log(exif);
             for (var info in exif) {
                 if (info === "model") {
                     template += '<i class="fa fa-camera-retro" aria-hidden="true"></i> ' + exif["model"] + '&nbsp;&nbsp;';
                 }
+                if (info === "lens_model") {
+                    template += '<i class="fas fas fa-dot-circle" aria-hidden="true"></i> ' + exif["lens_model"] + '&nbsp;&nbsp;';
+                }
                 if (info === "aperture") {
-                    template += '<i class="fa fa-dot-circle-o" aria-hidden="true"></i> f/' + exif["aperture"] + '&nbsp;&nbsp;';
+                    template += '<i class="fas fa-eye" aria-hidden="true"></i> f/' + exif["aperture"] + '&nbsp;&nbsp;';
                 }
                 if (info === "shutter_speed") {
-                    template += '<i class="fa fa-clock-o" aria-hidden="true"></i> ' + exif["shutter_speed"] + '&nbsp;&nbsp;';
+                    template += '<i class="far fa-clock" aria-hidden="true"></i> ' + exif["shutter_speed"] + '&nbsp;&nbsp;';
                 }
                 if (info === "iso") {
-                    template += '<i class="fa fa-info-circle" aria-hidden="true"></i> ' + exif["iso"] + '&nbsp;&nbsp;';
+                    template += '<i class="fa far fa-lightbulb" aria-hidden="true"></i> ' + exif["iso"] + '&nbsp;&nbsp;';
+                }
+                // if (info === "color_space") {
+                //     template += '<i class="fa fa-palette" aria-hidden="true"></i> ' + exif["color_space"] + '&nbsp;&nbsp;';
+                // }
+                if (info === "date_time") {
+                    template += '<i class="fa fa-calendar-alt" aria-hidden="true"></i> ' + exif["date_time"] + '&nbsp;&nbsp;';
                 }
             }
             return template;
@@ -331,6 +342,11 @@
 
             if (EXIF.getTag(img, "Model") !== undefined) {
                 exifData.model = EXIF.getTag(img, "Model");
+            }
+
+            //somehow lens model is referred as undefined
+            if (EXIF.getTag(img, "undefined") !== undefined) {
+                exifData.lens_model = EXIF.getTag(img, "undefined");
             }
 
             if (EXIF.getTag(img, "FNumber") !== undefined) {
@@ -344,6 +360,14 @@
             if (EXIF.getTag(img, "ISOSpeedRatings") !== undefined) {
                 exifData.iso = EXIF.getTag(img, "ISOSpeedRatings");
             }
+
+            if (EXIF.getTag(img, "DateTime") !== undefined) {
+                exifData.date_time = EXIF.getTag(img, "DateTime");
+            }
+
+            // if (EXIF.getTag(img, "ColorSpace") !== undefined) {
+            //     exifData.color_space = EXIF.getTag(img, "ColorSpace");
+            // }
             return exifData;
         }
 

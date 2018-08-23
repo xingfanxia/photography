@@ -1,25 +1,25 @@
 # Base configs
-baseurl: "http://photography.ramswaroop.me"
+baseurl: ""
 image_fulls_loc: "/images/fulls"
 image_thumbs_loc: "/images/thumbs"
-google_analytics: "UA-46465113-2"
+google_analytics: ""
 
 # UI configs
-title: "Photography by Ram Patra"
-subtitle: "See the world through my eyes!"
-author: "Ram Patra"
+title: "Photography by Xingfan Xia"
+subtitle: "See the world from another angle"
+author: "Xingfan Xia"
 header:
- title: "Photography"
- subtitle: "by Ram Patra"
+  title: "Photography"
+  subtitle: "by Xingfan Xia"
 footer:
- name: "Hey there, my name is Ram"
- bio: "I am a developer and a tech aficionado from India. Love making teeny tiny apps solving tiny problems in life and now learning photography."
- github: "Want a website like this for yourself for free? Just <a href=\"https://github.com/ramswaroop/photography\">fork me on github</a> ;)"
-web_design: "AJ"
+  name: "Hey there, my name is Xingfan"
+  bio: "I like photography because it exposed another angle to view the world around us"
+  github: 'Check out @<a href="https://xiax.ai">my site</a> to know more about me! ;)'
+web_design: "X.X."
 social_urls:
-  facebook: "https://www.facebook.com/ramswaroop"
-  twitter: "https://www.twitter.com/ramswarooppatra"
-  instagram: "https://www.instagram.com/ramswarooppatra"
-  dribbble: "https://dribbble.com/ramswaroop"
-  linkedin: "https://in.linkedin.com/in/ramswarooppatra"
-  github: "https://www.github.com/ramswaroop"
+  # facebook: ""
+  # twitter: ""
+  # instagram: ""
+  # dribbble: ""
+  linkedin: "https://www.linkedin.com/in/xingfanxia/"
+  github: "https://github.com/xingfanxia/"
