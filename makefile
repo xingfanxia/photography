@@ -13,3 +13,5 @@ fix_gem:
 	gem install nokogiri -v '1.8.4' --source 'https://rubygems.org/'	
 serve:
 	bunlde exec jekyll serve
+prod:
+	JEKYLL_ENV=production bundle exec jekyll build
